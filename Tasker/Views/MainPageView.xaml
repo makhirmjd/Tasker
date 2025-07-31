@@ -18,10 +18,11 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="Models:Category">
                         <Grid Padding="10">
+                            <RoundRectangle />
                             <VerticalStackLayout Padding="15" Spacing="10">
                                 <Label StyleClass="LightBlue" Text="{Binding PendingTasks, StringFormat='{0} Task(s)'}" />
                                 <Label StyleClass="DarkBlue,CardTitle" Text="{Binding CategoryName}" />
-                                <ProgressBar Progress=".5" ProgressColor="{Binding Color}" />
+                                <ProgressBar Progress="{Binding Percentage}" ProgressColor="{Binding Color}" />
                             </VerticalStackLayout>
                         </Grid>
                     </DataTemplate>
