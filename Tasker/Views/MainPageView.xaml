@@ -29,6 +29,37 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </Grid>
-        <Grid Grid.Row="2" BackgroundColor="DarkGoldenrod" />
+        <Grid Grid.Row="2" RowDefinitions=".2*,.8*">
+            <Label StyleClass="LightBlue,SubHeader" Text="PENDING TASKS" />
+            <CollectionView Grid.Row="1" ItemsSource="{Binding Tasks}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="Models:MyTask">
+                        <Border
+                            Padding="15"
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 10">
+                            <HorizontalStackLayout>
+                                <CheckBox
+                                    x:Name="TaskCheckBox"
+                                    IsChecked="{Binding Completed}"
+                                    VerticalOptions="Center"
+                                    Color="{Binding TaskColor}" 
+                                    CheckedChanged="TaskCheckBox_CheckedChanged"/>
+                                <Label Text="{Binding TaskName}" VerticalOptions="Center">
+                                    <Label.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding IsChecked, Source={x:Reference TaskCheckBox}}"
+                                            TargetType="Label"
+                                            Value="True">
+                                            <Setter Property="TextDecorations" Value="Strikethrough" />
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                            </HorizontalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
     </Grid>
 </ContentPage>

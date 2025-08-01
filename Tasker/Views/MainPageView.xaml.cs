@@ -12,4 +12,6 @@ public partial class MainPageView : ContentPage
 		BindingContext = viewModel;
         this.viewModel = viewModel;
     }
+
+    private void TaskCheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e) => viewModel.UpdateDataDynamically();
 }
