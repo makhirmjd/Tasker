@@ -1,11 +1,14 @@
-﻿using System.Collections.ObjectModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using Tasker.Models;
 
 namespace Tasker.ViewModels;
 
-public class MainPageViewModel
+public partial class MainPageViewModel : ObservableObject
 {
-    public ObservableCollection<Category> Categories { get; set; } = [];
+    public ObservableCollection<Category> Categories { get; set; }  = [];
     public ObservableCollection<MyTask> Tasks { get; set; } = [];
 
     public MainPageViewModel()
@@ -89,11 +92,20 @@ public class MainPageViewModel
             int totalTasks = Tasks.Count(t => t.CategoryId == c.Id);
             int completedTasks = Tasks.Count(t => t.CategoryId == c.Id && t.Completed);
             c.PendingTasks = totalTasks - completedTasks;
-            c.Percentage = (float)completedTasks / totalTasks * 100;
+            c.Percentage = (float)completedTasks / totalTasks;
             Tasks.Where(t => t.CategoryId == c.Id).ToList().ForEach(t =>
             {
                 t.TaskColor = c.Color;
+                c.Tasks.Add(t);
             });
+        });
+    }
+
+    public void UpdateDataDynamically()
+    {
+        Categories.ToList().ForEach(c =>
+        {
+            c.RefreshPendingTasks();
         });
     }
 }
