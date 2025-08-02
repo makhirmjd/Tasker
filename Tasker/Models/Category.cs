@@ -8,9 +8,12 @@ public partial class Category : ObservableObject
     public string CategoryName { get; set; } = default!;
     public string Color { get; set; } = default!;
     [ObservableProperty]
-    public int pendingTasks;
+    private int pendingTasks;
     [ObservableProperty]
-    public float percentage;
+    private float percentage;
+    [ObservableProperty]
+    private bool isSelected;
+
 
     public List<MyTask> Tasks { get; set; } = [];
 

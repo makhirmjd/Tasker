@@ -43,4 +43,21 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style x:Key="Task" TargetType="Entry">
+        <Setter Property="FontSize" Value="Large" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontFamily" Value="Roboto" />
+    </Style>
+
+    <Style x:Key="CircularButton" TargetType="Button">
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="Large" />
+        <Setter Property="VerticalOptions" Value="End" />
+        <Setter Property="HorizontalOptions" Value="End" />
+        <Setter Property="WidthRequest" Value="70" />
+        <Setter Property="HeightRequest" Value="70" />
+        <Setter Property="CornerRadius" Value="35" />
+    </Style>
 </ResourceDictionary>
