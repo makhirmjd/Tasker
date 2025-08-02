@@ -28,6 +28,7 @@ namespace Tasker
         private static void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<MainPageViewModel>();
+            services.AddSingleton<NewTaskPageViewModel>();
         }
     }
 }
